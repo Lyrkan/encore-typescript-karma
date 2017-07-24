@@ -1,6 +1,7 @@
 // Generate Encore runtimeConfig
 const context = require('@symfony/webpack-encore/lib/context');
 const parseRuntime = require('@symfony/webpack-encore/lib/config/parse-runtime');
+const ManifestPlugin = require('@symfony/webpack-encore/lib/webpack/webpack-manifest-plugin');
 
 const encoreArgs = ['dev-server'];
 context.runtimeConfig = parseRuntime(
@@ -13,7 +14,7 @@ const webpackConfig = require('./webpack.config');
 
 // Set writeToFileEmit option of the ManifestPlugin to false
 for (const plugin of webpackConfig.plugins) {
-  if (plugin.constructor.name === 'ManifestPlugin' && plugin.opts) {
+  if ((plugin instanceof ManifestPlugin) && plugin.opts) {
     plugin.opts.writeToFileEmit = false;
   }
 }

@@ -11,7 +11,7 @@ Encore
     // empty the outputPath dir before each build
     .cleanupOutputBeforeBuild()
 
-    // will output as web/build/main.js
+    // will output as build/main.js
     .addEntry('main', './src/index.ts')
 
     // enable ts-loader

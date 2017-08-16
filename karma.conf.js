@@ -1,13 +1,8 @@
-// Generate Encore runtimeConfig
-const context = require('@symfony/webpack-encore/lib/context');
-const parseRuntime = require('@symfony/webpack-encore/lib/config/parse-runtime');
+const Encore = require('@symfony/webpack-encore');
 const ManifestPlugin = require('@symfony/webpack-encore/lib/webpack/webpack-manifest-plugin');
 
-const encoreArgs = ['dev-server'];
-context.runtimeConfig = parseRuntime(
-  require('yargs').parse(encoreArgs),
-  process.cwd()
-);
+// Initialize Encore before requiring the .config file
+Encore.configureRuntimeEnvironment('dev-server');
 
 // Retrieve webpack config
 const webpackConfig = require('./webpack.config');
